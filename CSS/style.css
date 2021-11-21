@@ -1,0 +1,183 @@
+* {font-family: Lato, Arial, sans-serif;}
+
+body, html {height: 100%;}
+
+h1, h2, h3, h4, #topTitle, .fName, .longDate {
+  font-family: 'Patua One';
+  text-align: left;
+}
+
+a {text-decoration: none;}
+
+th {
+  cursor: pointer;
+  background-color: #2B80C3;
+  color: white;
+}
+
+#topTitle {
+  font-size: 40px;
+  color: black;
+  text-align: center;
+  margin-top: -12px;
+}
+
+#needMoreRows {
+  background-color: #0070C0;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+}
+
+.topTab {
+  width: 33%;
+  float: left;  
+  padding: 10px;
+  font-size: 18px;
+  color: black;
+  background-color: grey;  
+  color: white;
+  border-radius: 10px 10px 0px 0px;
+  text-align: center;
+  font-weight: bold;    
+  cursor: pointer;
+}
+
+.topTab:hover {background-color: darkgrey;}
+
+.tabContent {
+  text-align: center;
+  min-height: 100%;
+  background-color: #D6D5D0;
+  display: none;
+}
+
+.featured {
+  background-color: white;
+  border-radius: 15px;
+}
+
+.fText {
+  margin-top: -50px;
+  font-size: 24px;
+  font-style: italic;
+}
+
+.fName {
+  text-align: right;
+  font-size: 24px;
+}
+
+.longDate {
+  margin-top: 6px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.bigQuoteMark {
+  margin-top: -5px;
+  font-size: 80px;
+}
+
+.bkgrnd {
+  padding: 0px 8px;
+  background-color: black;
+  opacity: 0.7;
+  color: white;
+  margin: 8px;
+  font-size: 32px;
+}
+
+.menuItem, #bars {
+  font-size: 18px;
+  padding: 6px;
+  letter-spacing: 3px;
+  cursor: pointer;
+}
+
+.menuItem:hover, #bars:hover {
+  color: white;
+  background-color: black;
+  opacity: 0.7;
+}
+
+#bars {display: none;}
+
+#topNav {
+  position: fixed;
+  right: 10%;
+  top: 0px;
+  z-index: 1;
+}
+
+.button {
+  color: black;
+  font-size: 14px;
+  letter-spacing: 3px;
+  border: solid black 1.5px;
+  border-radius: 25px;
+  opacity: 0.7;
+  padding: 12px 32px;
+  margin: 8px;
+  transition: 0.3s;
+  cursor: pointer;
+  text-align: center;
+}
+
+.button:hover {
+  background-color: black;
+  color: white;
+}
+
+#mainContent {
+  margin-left: 10%;
+  margin-right: 10%;
+  height: 100%;
+}
+
+#pledgeForm {min-height: 1500px;}
+
+@media screen and (max-width: 1200px) {
+  #mainContent {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+  #topNav {right: 5%;}
+  #logo {height: 25px;}
+}
+
+@media screen and (max-width: 600px) {
+  #mainContent {
+    margin-left: 0%;
+    margin-right: 0%;
+  }
+  .menuItem:hover, #bars:hover {
+    color: black;
+    background-color: inherit;
+    opacity: 1;
+  }
+  #topNav {right: 16px;}
+  #hrtPhn {min-height: 450px;}
+  .button {font-size: 10px; padding: 8px 16px;}
+  .bkgrnd {font-size: 24px;}
+  #bars {display: inline;}  
+  .menuItem {display: block;}
+  #topTitle {font-size: 28px;}
+  .tabContent {padding: 8px;}
+  .topTab {font-size: 12px;}
+  .fText {font-size: 14px; margin-top: -20px;}
+  .fName {font-size: 14px;}
+  .longDate {font-size: 14px;}
+  .bigQuoteMark {font-size: 50px;}
+  #searchNull {font-size: 14px; text-align: center;}
+  #pledgeForm {min-height: 1650px;}
+  #verse {font-size: 14px;}
+  .navItems {display: none;}
+}
+
+@media screen and (max-width: 600px) {
+  .mobile {
+    display: block;
+    background-color: darkgrey;
+  }
+}
