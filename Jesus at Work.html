@@ -22,14 +22,15 @@
 
 <div id="mainContent">
   <!-- Logo and menu-->
-  <div id="topBar">
-    <a href="index.html"><img id="logo" src="Images/LovedandCalledURL.png" height="35" /></a>
-    <span class="w3-right">
-      <span class="menuItem" onclick="document.getElementById('about').style.display='block'">About</span>
-      <span class="menuItem" onclick="document.getElementById('contact').style.display='block'">Contact</span>
+  <a href="index.html"><img id="logo" src="Images/LovedandCalledURL.png" height="35" /></a>
+  <span id="topNav">
+    <span id="bars" onclick="openMobileMenu()"><i class="fa fa-bars"></i></span>
+    <span id="menuItems" class="navItems">
+      <a href="Jesus at work.html"><span class="menuItem">Stories</span></a>
+      <span class="menuItem" onclick="openModal('about')">About</span>
+      <span class="menuItem" onclick="openModal('contact')">Contact</span>      
     </span>
-  </div>
-
+  </span>
 
 	<!-- the tabs -->
 	<div style="padding-top: 16px;">
