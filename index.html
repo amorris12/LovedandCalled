@@ -13,7 +13,6 @@
 <link href='https://fonts.googleapis.com/css?family=Patua One' rel='stylesheet'>
 <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
 <script src="https://kit.fontawesome.com/be258eac49.js" crossorigin="anonymous"></script>
-<script type="text/javascript" src="js/script.js"></script>
 <link rel="stylesheet" href="css/style.css">
 
 <title>Loved and Called</title>
@@ -21,6 +20,27 @@
 </head>
 
 <body>
+
+<script type="text/javascript">
+
+function openMobileMenu() {
+  var x = document.getElementById("menuItems");
+  var y = document.getElementById("topNav");
+  if (x.className === "navItems") {    
+    x.className += " mobile";
+    y.className = "mobile";
+  } else {
+    x.className = "navItems";
+    y.className = "";
+  }
+}
+
+function openModal(modalID) {
+  document.getElementById(modalID).style.display='block';  
+  if (window.innerWidth < 601) {document.getElementById("bars").click();}
+}
+
+</script>
 
 <div id="mainContent">
   <!-- Logo and menu-->
