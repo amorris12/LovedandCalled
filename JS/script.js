@@ -311,3 +311,14 @@ function openModal(modalID) {
   document.getElementById(modalID).style.display='block';  
   if (window.innerWidth < 601) {document.getElementById("bars").click();}
 }
+
+function loadMenu() {
+  let menuData = [];
+  fetch("https://opensheet.vercel.app/" + sheetID + "/Menu")
+    .then((res) => res.text())
+    .then((text) => {
+      menuData = JSON.parse(text);
+      document.getElementById("topNav").innerHTML = menuData[0].html;
+
+    });
+}
