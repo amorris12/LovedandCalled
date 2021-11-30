@@ -21,16 +21,9 @@
 <body>
 
 <div id="mainContent">
-  <!-- Logo and menu-->
-  <a href="index.html"><img id="logo" src="Images/LovedandCalledURL.png" height="35" /></a>
-  <span id="topNav">
-    <span id="bars" onclick="openMobileMenu()"><i class="fa fa-bars"></i></span>
-    <span id="menuItems" class="navItems">
-      <a href="Jesus at work.html"><span class="menuItem">Stories</span></a>
-      <span class="menuItem" onclick="openModal('about')">About</span>
-      <span class="menuItem" onclick="openModal('contact')">Contact</span>      
-    </span>
-  </span>
+  	<!-- Logo and menu-->
+	<a href="index.html"><img id="logo" src="Images/LovedandCalledURL.png" height="35" /></a>
+	<span id="topNav"></span>
 
 	<!-- the tabs -->
 	<div style="padding-top: 16px;">
@@ -149,7 +142,10 @@
   </div>
 </div>
 
-<script>openTab(0);</script>
+<script>
+  openTab(0);
+  loadMenu();
+</script>
 
 </body>
 </html>
