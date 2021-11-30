@@ -22,6 +22,7 @@
 <body>
 
 <script type="text/javascript">
+var sheetID = "1za2j9ZKgC2t6CCDZTmXa2di0YTKZbYqOaJqLtmzC4eM";
 
 function openMobileMenu() {
   var x = document.getElementById("menuItems");
@@ -40,19 +41,23 @@ function openModal(modalID) {
   if (window.innerWidth < 601) {document.getElementById("bars").click();}
 }
 
+function loadMenu() {
+  let menuData = [];
+  fetch("https://opensheet.vercel.app/" + sheetID + "/Menu")
+    .then((res) => res.text())
+    .then((text) => {
+      menuData = JSON.parse(text);
+      document.getElementById("topNav").innerHTML = menuData[0].html;
+
+    });
+}
+
 </script>
 
 <div id="mainContent">
   <!-- Logo and menu-->
   <a href="index.html"><img id="logo" src="Images/LovedandCalledURL.png" height="35" /></a>
-  <span id="topNav">
-    <span id="bars" onclick="openMobileMenu()"><i class="fa fa-bars"></i></span>
-    <span id="menuItems" class="navItems">
-      <a href="Jesus at work.html"><span class="menuItem">Stories</span></a>
-      <span class="menuItem" onclick="openModal('about')">About</span>
-      <span class="menuItem" onclick="openModal('contact')">Contact</span>      
-    </span>
-  </span>
+  <span id="topNav"></span>
 
   <!-- Header Image -->
   <div id="hdrCntnr" class="w3-panel w3-display-container">
@@ -100,6 +105,8 @@ function openModal(modalID) {
     </footer>
   </div>
 </div>
+
+<script>loadMenu();</script>
 
 </body>
 
