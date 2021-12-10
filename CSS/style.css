@@ -104,7 +104,7 @@ th {
 #bars {display: none;}
 
 #topNav {
-  position: fixed;
+  position: absolute;
   right: 10%;
   top: 0px;
   z-index: 1;
