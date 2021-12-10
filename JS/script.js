@@ -65,36 +65,39 @@ function fillMyTable (whatSearch, displayColumns, searchColumns, limitRows) {
   }
 
   let HeadingsDone = "N", rowCount = 0, limited = false;
-  for (r = 0; r < numOfRows; r++) {
+  for (r = 0; r < numOfRows; r++) {    
     if (searchResults[r] == "Y" && parsedData[r].Approved == "TRUE") {
+      let myTimestamp = parsedData[r].Timestamp; 
+      let trimEnd = myTimestamp.indexOf(" ");
+      let myDate = myTimestamp.substr(0, trimEnd);
       changesMade = true;
-        setMyTable += "<tr>";
-        for (c = 0; c < x; c++) {
-          let thisColumnNum = columnAlphaToNum(theseColumns.substr(c, 1));
-          if (parsedData[r][myColumnIDs[thisColumnNum]] == null || parsedData[r][myColumnIDs[thisColumnNum]] == undefined) {
-            parsedData[r][myColumnIDs[thisColumnNum]] = "";
-          }
-          if (HeadingsDone == "N") {
-            setMyHeadings += "<th onclick='sortTable(" + c + ")' class='th" + 
-              c + "''>" + myHeadings[thisColumnNum] + "</th>";
-          }         
-          //Date and Miracle type small and bolded above story
-          setMyTable += "<td><small><b>" + dateYYYYmmDD(parsedData[r][myColumnIDs[4]]) + " - " 
-          + parsedData[r][myColumnIDs[5]] + "</b></small><br>" + parsedData[r][myColumnIDs[thisColumnNum]] + "</td>";
+      setMyTable += "<tr>";
+      for (c = 0; c < x; c++) {
+        let thisColumnNum = columnAlphaToNum(theseColumns.substr(c, 1));
+        if (parsedData[r][myColumnIDs[thisColumnNum]] == null || parsedData[r][myColumnIDs[thisColumnNum]] == undefined) {
+          parsedData[r][myColumnIDs[thisColumnNum]] = "";
+        }
+        if (HeadingsDone == "N") {
+          setMyHeadings += "<th onclick='sortTable(" + c + ")' class='th" + 
+            c + "''>" + myHeadings[thisColumnNum] + "</th>";
+        }         
+        //Date and Miracle type small and bolded above story
+        setMyTable += "<td><small><b>" + dateYYYYmmDD(myDate) + " - " + parsedData[r][myColumnIDs[5]] + "</b></small><br>" 
+        + parsedData[r][myColumnIDs[thisColumnNum]] + "</td>";
 
-        }
-        setMyTable += "</tr>";
-        HeadingsDone = "Y";
-        rowCount ++;
-        if (parsedData[r].Feature != null) {
-          document.getElementById("fDate" + parsedData[r].Feature).innerHTML = dateAsText(parsedData[r][myColumnIDs[4]]);
-          document.getElementById("fText" + parsedData[r].Feature).innerHTML = parsedData[r][myColumnIDs[6]];
-          document.getElementById("fName" + parsedData[r].Feature).innerHTML = parsedData[r][myColumnIDs[3]];
-        }
-        if (rowCount == limitRows && limitRows < approvedRows) {
-          limited = true;
-          break;
-        }
+      }
+      setMyTable += "</tr>";
+      HeadingsDone = "Y";
+      rowCount ++;
+      if (parsedData[r].Feature != null) {
+        document.getElementById("fDate" + parsedData[r].Feature).innerHTML = dateAsText(myDate);
+        document.getElementById("fText" + parsedData[r].Feature).innerHTML = parsedData[r][myColumnIDs[6]];
+        document.getElementById("fName" + parsedData[r].Feature).innerHTML = parsedData[r][myColumnIDs[3]];
+      }
+      if (rowCount == limitRows && limitRows < approvedRows) {
+        limited = true;
+        break;
+      }
     }
   }
 
