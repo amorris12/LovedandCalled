@@ -129,6 +129,11 @@ th {
   color: white;
 }
 
+.radioFilter {
+  float: left;
+  display: none;
+}
+
 #mainContent {
   margin-left: 10%;
   margin-right: 10%;
