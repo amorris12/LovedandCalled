@@ -317,7 +317,7 @@ function openModal(modalID) {
 
 function loadMenu() {
   let menuData = [];
-  fetch("https://opensheet.vercel.app/" + sheetID + "/Menu")
+  fetch("https://opensheet.vercel.app/1za2j9ZKgC2t6CCDZTmXa2di0YTKZbYqOaJqLtmzC4eM/Menu")
     .then((res) => res.text())
     .then((text) => {
       menuData = JSON.parse(text);
