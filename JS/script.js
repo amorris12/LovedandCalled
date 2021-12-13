@@ -40,6 +40,7 @@ function loadGoogleSheet (whatSheetID) {
       approvedRows = countApprovedRows();
 
       fillMyTable("", "G", "");
+      displayRadios();
 
     });
 }
@@ -324,4 +325,16 @@ function loadMenu() {
       document.getElementById("topNav").innerHTML = menuData[0].html;
 
     });
+}
+
+function displayRadios() {
+  let i, allFilters;
+  for (i = 0; i < numOfRows; i ++) {
+    if (parsedData[i].Approved == "TRUE") {allFilters += parsedData[i][myColumnIDs[5]] + "|";}
+  }
+  let myRadios = document.getElementsByClassName("radioFilter");
+  let filterIndex = ["Physical", "Emotional", "Spiritual", "Felt", "Cirumstances", "Nature"];
+  for (i = 0; i < myRadios.length; i ++) {    
+    if (allFilters.indexOf(filterIndex[i]) >= 0) {myRadios[i].style.display = "block";}
+  }
 }
