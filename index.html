@@ -23,6 +23,7 @@
 
 <script type="text/javascript">
 var sheetID = "1za2j9ZKgC2t6CCDZTmXa2di0YTKZbYqOaJqLtmzC4eM";
+var menuData = [];
 
 function openMobileMenu() {
   var x = document.getElementById("menuItems");
@@ -36,13 +37,7 @@ function openMobileMenu() {
   }
 }
 
-function openModal(modalID) {
-  document.getElementById(modalID).style.display='block';  
-  if (window.innerWidth < 601) {document.getElementById("bars").click();}
-}
-
 function loadMenu() {
-  let menuData = [];
   fetch("https://opensheet.vercel.app/" + sheetID + "/Menu")
     .then((res) => res.text())
     .then((text) => {
@@ -52,11 +47,18 @@ function loadMenu() {
     });
 }
 
+function openModal(whichModal) {
+  document.getElementById("modalTitle").innerHTML = menuData[whichModal].modalTitle;
+  document.getElementById("modalText").innerHTML = menuData[whichModal].modalText;
+  document.getElementById("myModal").style.display='block';  
+  if (window.innerWidth < 601) {document.getElementById("bars").click();}
+}
+
 </script>
 
 <div id="mainContent">
   <!-- Logo and menu-->
-  <a href="index.html"><img id="logo" src="Images/LovedandCalledURL.png" height="35" /></a>
+  <a href="http://lovedandcalled.ca/"><img id="logo" src="Images/LovedandCalledURL.png" height="35" /></a>
   <span id="topNav"></span>
 
   <!-- Header Image -->
@@ -70,40 +72,21 @@ function loadMenu() {
   </div>
 </div>
 
-<!-- About Modal -->
-<div id="about" class="w3-modal w3-animate-opacity">
+<!-- Modal -->
+<div id="myModal" class="w3-modal w3-animate-opacity">
   <div class="w3-modal-content w3-card-4">
     <header class="w3-container w3-black"> 
-      <span onclick="document.getElementById('about').style.display='none'" 
+      <span onclick="document.getElementById('myModal').style.display='none'" 
       class="w3-button w3-large w3-display-topright">&times;</span>
-      <h2>About</h2>
+      <h2 id="modalTitle">Title</h2>
     </header>
-    <div class="w3-container">
-      <p>Paul addressed his letter to the Romans "To all in Rome who are loved by God and called to be His holy people." We are loved by God and called to be His holy people here in Waterloo Region. LovedAndCalled.ca exist to celebrate what God is doing through His people and connect us 168 hours a week.</p>
-      <p>LovedAndCalled.ca is managed by a team that wants to see all believers in the Region in complete unity as Jesus prayed in John 17.</p>
-    </div>
+    <div id="modalText" class="w3-container">Text</div>
     <footer class="w3-container w3-black">
       <p class="w3-right">LovedAndCalled.ca</p>
     </footer>
   </div>
 </div>
 
-<!-- Contact Modal -->
-<div id="contact" class="w3-modal w3-animate-opacity">
-  <div class="w3-modal-content w3-card-4">
-    <header class="w3-container w3-black"> 
-      <span onclick="document.getElementById('contact').style.display='none'" 
-      class="w3-button w3-large w3-display-topright">&times;</span>
-      <h2>Contact</h2>
-    </header>
-    <div class="w3-container">
-      <p>If you want to know more about LovedAndCalled.ca send an email to 
-        <a href="mailto:hello@lovedandcalled.ca?Subject=Loved%20and%20Called%20Question" target="_top">hello@lovedandcalled.ca</a></p>
-    </div>
-    <footer class="w3-container w3-black">
-      <p class="w3-right">LovedAndCalled.ca</p>
-    </footer>
-  </div>
 </div>
 
 <script>loadMenu();</script>
