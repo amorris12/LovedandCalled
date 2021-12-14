@@ -1,6 +1,7 @@
 var sheetID = "1za2j9ZKgC2t6CCDZTmXa2di0YTKZbYqOaJqLtmzC4eM"; // the ID from the Google URL
 var sheetName = "FormResponses";
 var parsedData = []; // this will be the sheet data called by parsedData[row_number][column_heading]
+var menuData = [];
 var myColumnIDs = []; // this will call the column from the parsed data
 var numOfRows = 0; // this will be the number of rows excluding the headers
 var approvedRows = 0;
@@ -311,13 +312,7 @@ function openMobileMenu() {
   }
 }
 
-function openModal(modalID) {
-  document.getElementById(modalID).style.display='block';  
-  if (window.innerWidth < 601) {document.getElementById("bars").click();}
-}
-
 function loadMenu() {
-  let menuData = [];
   fetch("https://opensheet.vercel.app/1za2j9ZKgC2t6CCDZTmXa2di0YTKZbYqOaJqLtmzC4eM/Menu")
     .then((res) => res.text())
     .then((text) => {
@@ -325,6 +320,13 @@ function loadMenu() {
       document.getElementById("topNav").innerHTML = menuData[0].html;
 
     });
+}
+
+function openModal(whichModal) {
+  document.getElementById("modalTitle").innerHTML = menuData[whichModal].modalTitle;
+  document.getElementById("modalText").innerHTML = menuData[whichModal].modalText;
+  document.getElementById("myModal").style.display='block';  
+  if (window.innerWidth < 601) {document.getElementById("bars").click();}
 }
 
 function displayRadios() {
