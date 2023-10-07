@@ -22,7 +22,7 @@ loadGoogleSheet(sheetID);
 
 function loadGoogleSheet (whatSheetID) {
   sheetID = whatSheetID;
-  fetch("https://opensheet.vercel.app/" + whatSheetID + "/" + sheetName)
+  fetch("https://opensheet.elk.sh/" + whatSheetID + "/" + sheetName)
     .then((res) => res.text())
     .then((text) => {
       parsedData = JSON.parse(text);
@@ -313,7 +313,7 @@ function openMobileMenu() {
 }
 
 function loadMenu() {
-  fetch("https://opensheet.vercel.app/1za2j9ZKgC2t6CCDZTmXa2di0YTKZbYqOaJqLtmzC4eM/Menu")
+  fetch("https://opensheet.elk.sh/1za2j9ZKgC2t6CCDZTmXa2di0YTKZbYqOaJqLtmzC4eM/Menu")
     .then((res) => res.text())
     .then((text) => {
       menuData = JSON.parse(text);
