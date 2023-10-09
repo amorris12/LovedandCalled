@@ -9,6 +9,11 @@ h1, h2, h3, h4, #topTitle, .fName, .longDate {
 
 a {text-decoration: none;}
 
+header, footer, th {
+  background-color: #006AB4;
+  color: white;
+}
+
 th {
   cursor: pointer;
   background-color: #2B80C3;
