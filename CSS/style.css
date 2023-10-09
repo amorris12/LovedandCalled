@@ -115,6 +115,10 @@ th {
   z-index: 1;
 }
 
+.half {
+  width: 50%;
+}
+
 .button {
   color: black;
   font-size: 14px;
