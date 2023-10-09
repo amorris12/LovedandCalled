@@ -117,6 +117,7 @@ th {
 
 .halfDiv {
   width: 50%;
+  float: left;
 }
 
 .button {
