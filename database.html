@@ -10,6 +10,9 @@
 <link href='https://fonts.googleapis.com/css?family=Patua One' rel='stylesheet'>
 <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
 <script src="https://kit.fontawesome.com/be258eac49.js" crossorigin="anonymous"></script>
+<script type="text/javascript" src="js/script.js"></script>
+
+<title>Searchable Database</title>
 
 <style type="text/css">
 
@@ -146,46 +149,56 @@ window.onclick = function(event) {
 
 </script>
 
-<!-- Header with link to form -->
-<a href="https://docs.google.com/forms/d/e/1FAIpQLSc-Il5KQVtUkwTt1iNrZPH3C4oaXH1AuOiFhkfFnZCMQDpR1g/viewform?usp=sf_link" target="new">
-  <img src="https://onedrive.live.com/embed?resid=B897E107E7D5B801%2113371&authkey=%21ADe0lC0IViCTIDA&width=1360&height=326" width="100%" style="padding-bottom: 12px;" />
-</a>
+<div id="mainContent">
 
-<!-- Search Box -->
-<input type="text" id="myInput" onclick="this.value=''; filterData()" onkeydown="keyCode(this, event)" onkeyup="filterData()" placeholder="Search Database...">
+  <!-- Logo and menu-->
+  <a href="https://collectiveimpact.netlify.app/">
+    <img id="logo" src="Images/CollectiveImpact Banner.png" height="35" />
+  </a>
+  <span id="topNav"></span>
 
-<!-- Table with Data -->
-<table id="myTable">
-  <tr class="header">
-    <th>Ministry</th>
-    <th style='display: none;'>Description</th>
-    <th>Focus</th>
-    <th>Helping</th>
-    <th style='display: none;'>Tags</th>
-  </tr>
-  <tbody id="myData"></tbody>
-</table>
+  <!-- Header with link to form -->
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLSc-Il5KQVtUkwTt1iNrZPH3C4oaXH1AuOiFhkfFnZCMQDpR1g/viewform?usp=sf_link" target="new">
+    <img src="https://onedrive.live.com/embed?resid=B897E107E7D5B801%2113371&authkey=%21ADe0lC0IViCTIDA&width=1360&height=326" width="100%" style="padding-bottom: 12px;" />
+  </a>
 
-<!-- Modal to Show More -->
-<div class="w3-container">
-  <div id="moreModal" class="w3-modal w3-animate-opacity">
-    <div class="w3-modal-content w3-card-4">
-      <header class="w3-container"> 
-        <span onclick="document.getElementById('moreModal').style.display='none'" class="w3-button w3-display-topright">&times;</span>
-        <h2 id="mHead">Modal Header</h2>
-      </header>
-      <div class="w3-container">
-        <p><b>Overview:</b><br><span id="mOffering"></span></p>
-        <p id="mDesc"><p>
-        <p id="mContact"></p>
-        <p id="mCommit"></p>
-        <p><b>Tags:</b><br><span id="mTags" class="w3-tiny"></span></p>
+  <!-- Search Box -->
+  <input type="text" id="myInput" onclick="this.value=''; filterData()" onkeydown="keyCode(this, event)" onkeyup="filterData()" placeholder="Search Database...">
+
+  <!-- Table with Data -->
+  <table id="myTable">
+    <tr class="header">
+      <th>Ministry</th>
+      <th style='display: none;'>Description</th>
+      <th>Focus</th>
+      <th>Helping</th>
+      <th style='display: none;'>Tags</th>
+    </tr>
+    <tbody id="myData"></tbody>
+  </table>
+
+  <!-- Modal to Show More -->
+  <div class="w3-container">
+    <div id="moreModal" class="w3-modal w3-animate-opacity">
+      <div class="w3-modal-content w3-card-4">
+        <header class="w3-container"> 
+          <span onclick="document.getElementById('moreModal').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+          <h2 id="mHead">Modal Header</h2>
+        </header>
+        <div class="w3-container">
+          <p><b>Overview:</b><br><span id="mOffering"></span></p>
+          <p id="mDesc"></p>
+          <p id="mContact"></p>
+          <p id="mCommit"></p>
+          <p><b>Tags:</b><br><span id="mTags" class="w3-tiny"></span></p>
+        </div>
+        <footer class="w3-container">
+          <p id="mFoot">Modal Footer</p>
+        </footer>
       </div>
-      <footer class="w3-container">
-        <p id="mFoot">Modal Footer</p>
-      </footer>
     </div>
   </div>
+
 </div>
 
 </body>
