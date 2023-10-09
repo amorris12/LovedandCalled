@@ -119,7 +119,15 @@ th {
   width: 50%;
   float: left;
   text-align: center;
-  background-color: grey;
+  padding: 8px;
+}
+
+.featuredImg {
+  width: 100%;
+}
+
+.featuredImg:hover {
+  opacity: 0.75;
 }
 
 .button {
