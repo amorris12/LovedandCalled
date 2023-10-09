@@ -22,7 +22,6 @@
 <body>
 
 <script type="text/javascript">
-var sheetID = "1za2j9ZKgC2t6CCDZTmXa2di0YTKZbYqOaJqLtmzC4eM";
 var menuData = [];
 
 function openMobileMenu() {
@@ -38,7 +37,8 @@ function openMobileMenu() {
 }
 
 function loadMenu() {
-  fetch("https://opensheet.vercel.app/" + sheetID + "/Menu")
+  var sheetID = "1za2j9ZKgC2t6CCDZTmXa2di0YTKZbYqOaJqLtmzC4eM";
+  fetch("https://opensheet.elk.sh/" + sheetID + "/Menu")
     .then((res) => res.text())
     .then((text) => {
       menuData = JSON.parse(text);
