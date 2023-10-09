@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta http-equiv="x-ua-compatible" content="ie=edge" />
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link href='https://fonts.googleapis.com/css?family=Patua One' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
+<script src="https://kit.fontawesome.com/be258eac49.js" crossorigin="anonymous"></script>
+
+<style type="text/css">
+
+* {font-family: Lato, Arial, sans-serif;}
+a {text-decoration: none;}
+
+header, footer, th {
+  background-color: #006AB4;
+  color: white;
+}
+
+#myInput {
+  background-image: url('images/magnifying-glass-solid.png'); /* Add a search icon to input */
+  background-position: 10px 12px; /* Position the search icon */
+  background-repeat: no-repeat; /* Do not repeat the icon image */
+  width: 100%; /* Full-width */
+  font-size: 16px; /* Increase font-size */
+  padding: 12px 20px 12px 40px; /* Add some padding */
+  border: 1px solid #ddd; /* Add a grey border */
+  margin-bottom: 12px; /* Add some space below the input */
+}
+
+#myTable {
+  border-collapse: collapse; /* Collapse borders */
+  width: 100%; /* Full-width */
+  border: 1px solid #ddd; /* Add a grey border */
+  font-size: 18px; /* Increase font-size */
+}
+
+#myTable th, #myTable td {
+  text-align: left; /* Left-align text */
+  vertical-align: top; /* Top-align text */
+  padding: 12px; /* Add padding */
+}
+
+#myTable tr {
+  /* Add a bottom border to all table rows */
+  border-bottom: 1px solid #ddd;
+  cursor: help;
+}
+
+#myTable tr:hover {
+  /* Add a grey background color to the table rows on hover */
+  background-color: #f1f1f1;
+}
+
+.close {
+  padding: 8px;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+  * {font-size: 14px;}
+}
+
+</style>
+</head>
+
+<body>
+
+<script>
+var sheetID = "1d-dTKDhEWfRkCeanZSWvp_5JsW1YIwLhKxTV0nT4Oj4";
+var sheetName = "List";
+var myDatabase = [];
+
+fetch("https://opensheet.elk.sh/" + sheetID + "/" + sheetName)
+  .then((res) => res.text())
+  .then((text) => {     
+    myDatabase = JSON.parse(text);
+    let i, tableData = "";
+    for (i = 1; i < myDatabase.length; i ++) {
+      tableData += "<tr onclick='seeMore("  + i + ")'>" + 
+      "<td>" + myDatabase[i].name + " <a target='blank' href = 'http://" + myDatabase[i].url + "'><i class='fa-solid fa-up-right-from-square'></i></a>" +
+        "<br><small><b>" + myDatabase[i].city + "</b></small></td>" +
+      "<td style='display: none;'>" + myDatabase[i].desc + "</td>" +
+      "<td>" + myDatabase[i].primaryArea + "</td>" +
+      "<td><b>Tags:</b> <small>" + myDatabase[i].needs + "</small></td>" +
+      "<td style='display: none;'>" + myDatabase[i].felt + myDatabase[i].faith + myDatabase[i].emotional + myDatabase[i].mental + myDatabase[i].practical + "</td>" +
+      "</tr>";
+    }
+    document.getElementById("myData").innerHTML = tableData;
+});
+
+function filterData() {
+  var input, inputTxt, queryWords, table, tr, td, th, r, c, w, txtValue;
+  input = document.getElementById("myInput");
+  inputTxt = input.value.toUpperCase();
+  inputTxt = inputTxt.trim();
+  queryWords = inputTxt.split(" ");
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  th = document.getElementsByTagName("th");
+
+  for (r = 1; r < tr.length; r++) {
+    let foundCount = 0;
+    for (w = 0; w < queryWords.length; w++) {
+      let foundWord = false;
+      for (c = 0; c < th.length; c++) {
+        td = tr[r].getElementsByTagName("td")[c];
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(queryWords[w]) > -1) {foundWord = true; break;}
+      }
+      if (foundWord) {foundCount += 1;}
+    }
+    if (foundCount == queryWords.length) {tr[r].style.display = "";} else {tr[r].style.display = "none";}
+  }
+}
+
+function seeMore(x) {
+  document.getElementById("mHead").innerText = myDatabase[x].name;
+  document.getElementById("mOffering").innerText = myDatabase[x].format + " offering " + myDatabase[x].nature
+  document.getElementById("mDesc").innerText = myDatabase[x].desc;
+  document.getElementById("mContact").innerHTML = "<b>Contact:</b><br>" + myDatabase[x].email + "<br>" + myDatabase[x].phone;
+  if(myDatabase[x].commit || myDatabase[x].freq) {
+    document.getElementById("mCommit").innerText = "Requires " + myDatabase[x].commit + " " + myDatabase[x].freq;
+  } else {
+    document.getElementById("mCommit").innerText = "";
+  }
+  document.getElementById("mTags").innerText = myDatabase[x].felt + myDatabase[x].faith + myDatabase[x].emotional + myDatabase[x].mental + myDatabase[x].practical
+  document.getElementById("mFoot").innerHTML = "Based in " + myDatabase[x].city 
+    + " | Serving " + myDatabase[x].reach + " | <a target='blank' href = 'http://" + myDatabase[x].url + "'>" + myDatabase[x].url + "</a>";
+
+  document.getElementById("moreModal").style.display='block';
+}
+
+function keyCode(object, event) {
+  if (event.keyCode == 27) {object.value = "";}
+}
+
+window.onclick = function(event) {
+  var modal = document.getElementById('moreModal');
+  if (event.target == modal) {modal.style.display = "none";}
+}
+
+</script>
+
+<!-- Header with link to form -->
+<a href="https://docs.google.com/forms/d/e/1FAIpQLSc-Il5KQVtUkwTt1iNrZPH3C4oaXH1AuOiFhkfFnZCMQDpR1g/viewform?usp=sf_link" target="new">
+  <img src="https://onedrive.live.com/embed?resid=B897E107E7D5B801%2113371&authkey=%21ADe0lC0IViCTIDA&width=1360&height=326" width="100%" style="padding-bottom: 12px;" />
+</a>
+
+<!-- Search Box -->
+<input type="text" id="myInput" onclick="this.value=''; filterData()" onkeydown="keyCode(this, event)" onkeyup="filterData()" placeholder="Search Database...">
+
+<!-- Table with Data -->
+<table id="myTable">
+  <tr class="header">
+    <th>Ministry</th>
+    <th style='display: none;'>Description</th>
+    <th>Focus</th>
+    <th>Helping</th>
+    <th style='display: none;'>Tags</th>
+  </tr>
+  <tbody id="myData"></tbody>
+</table>
+
+<!-- Modal to Show More -->
+<div class="w3-container">
+  <div id="moreModal" class="w3-modal w3-animate-opacity">
+    <div class="w3-modal-content w3-card-4">
+      <header class="w3-container"> 
+        <span onclick="document.getElementById('moreModal').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+        <h2 id="mHead">Modal Header</h2>
+      </header>
+      <div class="w3-container">
+        <p><b>Overview:</b><br><span id="mOffering"></span></p>
+        <p id="mDesc"><p>
+        <p id="mContact"></p>
+        <p id="mCommit"></p>
+        <p><b>Tags:</b><br><span id="mTags" class="w3-tiny"></span></p>
+      </div>
+      <footer class="w3-container">
+        <p id="mFoot">Modal Footer</p>
+      </footer>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
