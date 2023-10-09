@@ -10,7 +10,6 @@
 <link href='https://fonts.googleapis.com/css?family=Patua One' rel='stylesheet'>
 <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
 <script src="https://kit.fontawesome.com/be258eac49.js" crossorigin="anonymous"></script>
-<script type="text/javascript" src="js/script.js"></script>
 <link rel="stylesheet" href="css/style.css">
 
 <title>Searchable Database</title>
@@ -148,6 +147,35 @@ window.onclick = function(event) {
   if (event.target == modal) {modal.style.display = "none";}
 }
 
+function openMobileMenu() {
+  var x = document.getElementById("menuItems");
+  var y = document.getElementById("topNav");
+  if (x.className === "navItems") {    
+    x.className += " mobile";
+    y.className = "mobile";
+  } else {
+    x.className = "navItems";
+    y.className = "";
+  }
+}
+
+function loadMenu() {
+  fetch("https://opensheet.elk.sh/1za2j9ZKgC2t6CCDZTmXa2di0YTKZbYqOaJqLtmzC4eM/Menu")
+    .then((res) => res.text())
+    .then((text) => {
+      menuData = JSON.parse(text);
+      document.getElementById("topNav").innerHTML = menuData[0].html;
+
+    });
+}
+
+function openModal(whichModal) {
+  document.getElementById("modalTitle").innerHTML = menuData[whichModal].modalTitle;
+  document.getElementById("modalText").innerHTML = menuData[whichModal].modalText;
+  document.getElementById("myModal").style.display='block';  
+  if (window.innerWidth < 601) {document.getElementById("bars").click();}
+}
+
 </script>
 
 <div id="mainContent">
@@ -212,7 +240,7 @@ window.onclick = function(event) {
     </header>
     <div id="modalText" class="w3-container">Text</div>
     <footer class="w3-container w3-black">
-      <p class="w3-right">LovedAndCalled.ca</p>
+      <p class="w3-right">Collective Impact</p>
     </footer>
   </div>
 </div>
