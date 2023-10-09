@@ -115,18 +115,7 @@ th {
   z-index: 1;
 }
 
-.halfDiv {
-  width: 50%;
-  float: left;
-  text-align: center;
-  padding: 8px;
-}
-
-.featuredImg {
-  width: 100%;
-}
-
-.featuredImg:hover {
+.hoverBox:hover {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
