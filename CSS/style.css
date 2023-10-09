@@ -117,7 +117,9 @@ th {
 
 .halfDiv {
   width: 50%;
-  float: left;
+  float: right;
+  text-align: center;
+  border: 1px solid grey;
 }
 
 .button {
