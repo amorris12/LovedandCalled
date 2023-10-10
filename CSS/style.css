@@ -196,6 +196,10 @@ th {
     display: block;
     background-color: darkgrey;
   }
-  .hoverBox {box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);}
+  .hoverBox {
+    margin: 4px;
+    filter: drop-shadow(8px 8px 10px gray);
+  }
+  .hoverBox:hover {box-shadow: none;}
   .hideMobile {display: none;}
 }
