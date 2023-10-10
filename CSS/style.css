@@ -199,7 +199,7 @@ th {
     background-color: darkgrey;
   }
   .hoverBox {
-    margin: 8px;
+    margin: 16px 0px;
     padding-bottom: 0px;
     filter: drop-shadow(8px 8px 10px gray);
   }
