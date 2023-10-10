@@ -115,7 +115,9 @@ th {
   z-index: 1;
 }
 
-.hoverBox {padding-bottom: 16px;}
+.hoverBox {
+  padding-bottom: 16px;
+}
 
 .hoverBox:hover {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -197,7 +199,8 @@ th {
     background-color: darkgrey;
   }
   .hoverBox {
-    margin: 4px;
+    margin: 8px;
+    padding-bottom: 0px;
     filter: drop-shadow(8px 8px 10px gray);
   }
   .hoverBox:hover {box-shadow: none;}
