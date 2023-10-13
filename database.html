@@ -98,7 +98,7 @@ fetch("https://opensheet.elk.sh/" + sheetID + "/" + sheetName)
 });
 
 function filterData() {
-  var input, inputTxt, queryWords, table, tr, td, th, r, c, w, txtValue;
+  var input, inputTxt, queryWords, table, tr, td, th, r, c, w, txtValue, rowCount = 0;
   input = document.getElementById("myInput");
   inputTxt = input.value.toUpperCase();
   inputTxt = inputTxt.trim();
@@ -118,8 +118,16 @@ function filterData() {
       }
       if (foundWord) {foundCount += 1;}
     }
-    if (foundCount == queryWords.length) {tr[r].style.display = "";} else {tr[r].style.display = "none";}
+    if (foundCount == queryWords.length) {
+      tr[r].style.display = "";
+      rowCount += 1;
+    } else {
+      tr[r].style.display = "none";
+    }
   }
+  let searchResult = "";
+  if (inputTxt.length == 0) {searchResult = "Ministry";} else {searchResult = rowCount + " found";}
+  document.getElementById("filterCount").innerText = searchResult;
 }
 
 function seeMore(x) {
@@ -198,7 +206,7 @@ function openModal(whichModal) {
   <!-- Table with Data -->
   <table id="myTable">
     <tr class="header">
-      <th>Ministry</th>
+      <th id="filterCount">Ministry</th>
       <th style='display: none;'>Description</th>
       <th>Focus</th>
       <th>Helping</th>
