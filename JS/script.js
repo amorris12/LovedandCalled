@@ -340,3 +340,8 @@ function displayRadios() {
     if (allFilters.indexOf(filterIndex[i]) >= 0) {myRadios[i].style.display = "block";}
   }
 }
+
+window.onclick = function(event) {
+  var modal2 = document.getElementById('myModal');
+  if (event.target == modal2) {modal2.style.display = "none";}
+}
