@@ -54,6 +54,12 @@ function openModal(whichModal) {
   if (window.innerWidth < 601) {document.getElementById("bars").click();}
 }
 
+window.onclick = function(event) {
+  var modal2 = document.getElementById('myModal');
+  if (event.target == modal2) {modal2.style.display = "none";}
+}
+
+
 </script>
 
 <div id="mainContent">
